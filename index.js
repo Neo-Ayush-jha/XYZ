@@ -68,9 +68,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const screenHeight = window.innerHeight;
 
             if (screenWidth < 600) {
-                dialog.style.width = '70%';
+                dialog.style.width = '90%';
             } else if (screenWidth < 992) {
-                dialog.style.width = '55%';
+                dialog.style.width = '90%';
             } else {
                 dialog.style.width = '400px';
             }
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const header = document.createElement('div');
         header.className = 'header';
         header.style.cssText = 'font-size: 28px; font-weight: 700; color: #000;';
-        header.textContent = 'TAU ChatBot';
+        header.textContent = 'NEO ChatBot';
 
         const status = document.createElement('div');
         status.className = 'status';
@@ -256,36 +256,12 @@ document.addEventListener("DOMContentLoaded", function () {
         followupQuestionsSection.className = 'follow-up';
 
         function sendMessage(messageContent) {
-            const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-            svgIcon.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-            svgIcon.setAttribute("width", "30");
-            svgIcon.setAttribute("height", "30");
-            svgIcon.setAttribute("viewBox", "0 0 24 24");
-            svgIcon.setAttribute("fill", "none");
-            svgIcon.setAttribute("fill", "#262c40");
-            svgIcon.setAttribute("color", "#fff");
-            svgIcon.setAttribute("stroke", "currentColor");
-            svgIcon.setAttribute("stroke-width", "2");
-            svgIcon.setAttribute("stroke-linecap", "round");
-            svgIcon.setAttribute("stroke-linejoin", "round");
-            svgIcon.classList.add("lucide", "lucide-circle-user");
-
-            const circle1 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-            circle1.setAttribute("cx", "12");
-            circle1.setAttribute("cy", "12");
-            circle1.setAttribute("r", "10");
-
-            const circle2 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-            circle2.setAttribute("cx", "12");
-            circle2.setAttribute("cy", "10");
-            circle2.setAttribute("r", "3");
-
-            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-            path.setAttribute("d", "M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662");
-
-            svgIcon.appendChild(circle1);
-            svgIcon.appendChild(circle2);
-            svgIcon.appendChild(path);
+            const svgIcon = document.createElement('img');
+            svgIcon.src = 'https://img.icons8.com/color/48/user.png';
+            svgIcon.alt = '';
+            svgIcon.style.width = '24px';
+            svgIcon.style.height = '24px';
+            svgIcon.style.marginBottom = '9px';
 
             const responseUserContent = messageContent;
 
@@ -317,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ai.style.gap = '4px';
 
                 const avatarImage = document.createElement('img');
-                avatarImage.src = 'https://dev.chatbot.simplyfy.ai/media/chat_services/Image_20240208_194749_669_i5cF03X.png';
+                avatarImage.src = 'https://ayush-jha.netlify.app/_ipx/w_640,q_75/%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png?url=%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png&w=640&q=75';
                 avatarImage.alt = '';
                 avatarImage.style.width = '24px';
                 avatarImage.style.height = '24px';
