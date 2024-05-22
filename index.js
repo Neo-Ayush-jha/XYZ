@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const dialog = document.createElement('div');
         dialog.id = 'dialog';
-        dialog.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background-color: #f8f9fa; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); display: none; ';
+        dialog.style.cssText = "position: fixed; bottom: 20px; right: 20px; background-color: #FFFFFF; border: 1px solid #DFDFE1FF; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); display: none;  font-family:  ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica Neue, Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'";
 
         function adjustDialogSize() {
             const screenWidth = window.innerWidth;
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const avatar = document.createElement('div');
         avatar.className = 'avatar';
         avatar.style.marginRight = '15px';
-        avatar.innerHTML = '<img src="https://ayush-jha.netlify.app/_ipx/w_640,q_75/%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png?url=%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png&w=640&q=75" alt="" style=" width: 45px; height: 45px;">';
+        avatar.innerHTML = '<img src="https://ayush-jha.netlify.app/_ipx/w_640,q_75/%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png?url=%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png&w=640&q=75" alt="" style=" width: 32px; height: 32px;">';
 
         const company = document.createElement('div');
         company.className = 'company';
@@ -171,23 +171,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const aiFirst = document.createElement('div');
         aiFirst.style.display = 'flex';
-        aiFirst.style.flexDirection = 'row';
-        aiFirst.style.alignItems = 'end';
-        aiFirst.style.gap = '2px';
+        aiFirst.style.flexDirection = 'column';
+        aiFirst.style.alignItems = 'start';
+
+        const avatarContainer = document.createElement('div');
+        avatarContainer.style.display = 'flex';
+        avatarContainer.style.alignItems = 'center';
+        avatarContainer.style.marginBottom = '8px';
+        avatarContainer.style.marginLeft = '-15px';
 
         const avatarImage = document.createElement('img');
-        avatarImage.src = 'https://ayush-jha.netlify.app/_ipx/w_640,q_75/%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png?url=%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png&w=640&q=75';
+        avatarImage.src = 'https://dev.chatbot.simplyfy.ai/media/chat_services/Image_20240208_194749_669_i5cF03X.png';
         avatarImage.alt = '';
         avatarImage.style.width = '24px';
         avatarImage.style.height = '24px';
-        avatarImage.style.marginBottom = '18px';
+        avatarImage.style.marginRight = '8px';
+
+
+        const botName = document.createElement('div');
+        botName.style.cssText = 'color: #666; font-size: 12px;';
+        botName.textContent = "NEO Chatbot";
 
         const message1 = document.createElement('div');
         message1.className = 'message left';
-        message1.style.cssText = 'background-color: #dbdada; color: #333; float: left; align-self: flex-start; max-width: 85%; margin-bottom: 10px; padding: 10px; border-radius: 12px 12px 12px 0px;';
+        message1.style.cssText = 'background-color: #E9E9EAFF; color: #333; float: left; align-self: flex-start; max-width: 85%; margin-bottom: 10px; padding: 10px; border-radius:2px 14px 14px 14px ;margin-left:10px';
         message1.textContent = "Absolutely, let's dive in 🙏! 🌟 Feel free to ask anything on your mind, and we'll navigate through together! 🚀.";
 
-        aiFirst.appendChild(avatarImage);
+        avatarContainer.appendChild(avatarImage);
+        avatarContainer.appendChild(botName);
+        aiFirst.appendChild(avatarContainer);
         aiFirst.appendChild(message1);
         conversation.appendChild(aiFirst)
 
@@ -256,12 +268,27 @@ document.addEventListener("DOMContentLoaded", function () {
         followupQuestionsSection.className = 'follow-up';
 
         function sendMessage(messageContent) {
+            const userContainer = document.createElement('div');
+            userContainer.style.display = 'flex';
+            userContainer.style.alignItems = 'end';
+            userContainer.style.marginBottom = '8px';
+            userContainer.style.marginLeft = '-15px';
+
             const svgIcon = document.createElement('img');
             svgIcon.src = 'https://img.icons8.com/color/48/user.png';
             svgIcon.alt = '';
             svgIcon.style.width = '24px';
             svgIcon.style.height = '24px';
-            svgIcon.style.marginBottom = '9px';
+            svgIcon.style.marginRight = '8px';
+
+
+            const userName = document.createElement('div');
+            userName.style.cssText = 'color: #666; font-size: 12px;';
+            userName.textContent = "Customer";
+
+            userContainer.appendChild(svgIcon);
+            userContainer.appendChild(userName);
+
 
             const responseUserContent = messageContent;
 
@@ -270,34 +297,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const container = document.createElement('div');
             container.style.display = 'flex';
-            container.style.flexDirection = 'row';
-            container.style.alignItems = 'center';
-            container.style.gap = '1px';
-            container.appendChild(svgIcon);
+            container.style.flexDirection = 'column';
+            container.style.alignItems = 'end';
+            container.appendChild(userContainer);
 
             const responseUserMessage = document.createElement('div');
-            responseUserMessage.className = 'message left';
-            responseUserMessage.style.cssText = 'position: relative; background-color: #007bff; color: #fff; float: left; align-self: flex-start; max-width: 85%; margin-bottom: 10px; padding: 10px; border-radius: 12px 12px 12px 0px;';
+            responseUserMessage.className = 'message right';
+            responseUserMessage.style.cssText = 'position: relative; background-color: #007bff; color: #fff; float: right; align-self: flex-end; max-width: 85%; margin-bottom: 10px; padding: 10px; border-radius:14px 2px 14px 14px;';
             responseUserMessage.textContent = responseUserContent;
+
 
             container.appendChild(responseUserMessage);
             conversation.appendChild(container);
-
             if (messageContent !== '') {
                 inputField.value = '';
 
                 const ai = document.createElement('div');
                 ai.style.display = 'flex';
-                ai.style.flexDirection = 'row';
-                ai.style.alignItems = 'end';
-                ai.style.gap = '4px';
+                ai.style.flexDirection = 'column';
+                ai.style.alignItems = 'start';
+
+
+                const avatarContainer = document.createElement('div');
+                avatarContainer.style.display = 'flex';
+                avatarContainer.style.alignItems = 'center';
+                avatarContainer.style.marginBottom = '8px';
+                avatarContainer.style.marginLeft = '-15px';
+
 
                 const avatarImage = document.createElement('img');
-                avatarImage.src = 'https://ayush-jha.netlify.app/_ipx/w_640,q_75/%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png?url=%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png&w=640&q=75';
+                avatarImage.src = 'https://dev.chatbot.simplyfy.ai/media/chat_services/Image_20240208_194749_669_i5cF03X.png';
                 avatarImage.alt = '';
                 avatarImage.style.width = '24px';
                 avatarImage.style.height = '24px';
-                avatarImage.style.marginBottom = '18px';
+                avatarImage.style.marginRight = '8px';
+
+                const botName = document.createElement('div');
+                botName.style.cssText = 'color: #666; font-size: 12px;';
+                botName.textContent = "NEO Chatbot";
+
+                avatarContainer.appendChild(avatarImage);
+                avatarContainer.appendChild(botName);
 
                 const typingMessage = document.createElement('div');
                 typingMessage.className = 'message left';
@@ -341,7 +381,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         responseMessage.className = 'message left';
                         responseMessage.style.cssText = 'background-color: #dbdada; color: #333; float: left; align-self: flex-start;max-width: 85%;margin-bottom: 10px;padding: 10px;border-radius: 12px 12px 12px 0px;';
                         responseMessage.textContent = responseDataContent;
-                        ai.appendChild(avatarImage);
+                        ai.appendChild(avatarContainer);
 
                         ai.appendChild(responseMessage);
                         conversation.appendChild(ai);
