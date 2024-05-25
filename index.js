@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const openDialogButton = document.createElement('button');
     openDialogButton.id = 'openDialogButton';
-    openDialogButton.style.cssText = 'position: fixed; background-color: #64ffda; color: white; border: none; border-radius: 50%; padding: 10px 14px; cursor: pointer;';
+    openDialogButton.style.cssText = 'position: fixed; color: white; border: none; border-radius: 50%; padding: 10px 14px; cursor: pointer;';
 
     const openDialogButtonImage = document.createElement('img');
     openDialogButtonImage.src = 'https://ayush-jha.netlify.app/_ipx/w_640,q_75/%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png?url=%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png&w=640&q=75';
@@ -161,12 +161,12 @@ document.addEventListener("DOMContentLoaded", function () {
         conversation.style.cssText = 'flex: 1; padding: 10px; border-radius: 8px; margin-bottom: 10px; height: 360px;';
         const screenHeight = window.innerHeight;
 
-        if (screenHeight <= 600) { 
-          conversation.style.height = '200px';
-        } else if (screenHeight <= 800) { 
-          conversation.style.height = '280px';
-        } else { 
-          conversation.style.height = '360px';
+        if (screenHeight <= 600) {
+            conversation.style.height = '200px';
+        } else if (screenHeight <= 800) {
+            conversation.style.height = '280px';
+        } else {
+            conversation.style.height = '360px';
         }
 
         const aiFirst = document.createElement('div');
@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
         avatarContainer.style.marginLeft = '-15px';
 
         const avatarImage = document.createElement('img');
-        avatarImage.src = 'https://dev.chatbot.simplyfy.ai/media/chat_services/Image_20240208_194749_669_i5cF03X.png';
+        avatarImage.src = 'https://ayush-jha.netlify.app/_ipx/w_640,q_75/%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png?url=%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png&w=640&q=75';
         avatarImage.alt = '';
         avatarImage.style.width = '24px';
         avatarImage.style.height = '24px';
@@ -326,7 +326,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 const avatarImage = document.createElement('img');
-                avatarImage.src = 'https://dev.chatbot.simplyfy.ai/media/chat_services/Image_20240208_194749_669_i5cF03X.png';
+                avatarImage.src = 'https://ayush-jha.netlify.app/_ipx/w_640,q_75/%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png?url=%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png&w=640&q=75';
                 avatarImage.alt = '';
                 avatarImage.style.width = '24px';
                 avatarImage.style.height = '24px';
@@ -377,15 +377,15 @@ document.addEventListener("DOMContentLoaded", function () {
                         conversation.removeChild(typingMessage);
 
                         const responseDataContent = data.data.content;
+
                         const responseMessage = document.createElement('div');
                         responseMessage.className = 'message left';
-                        responseMessage.style.cssText = 'background-color: #dbdada; color: #333; float: left; align-self: flex-start;max-width: 85%;margin-bottom: 10px;padding: 10px;border-radius: 12px 12px 12px 0px;';
-                        responseMessage.textContent = responseDataContent;
+                        responseMessage.style.cssText = 'background-color: #E9E9EAFF; color: #333; float: left; align-self: flex-start;max-width: 85%;margin-bottom: 10px;padding: 10px;border-radius:2px 14px 14px 14px ;margin-left:10px';
                         ai.appendChild(avatarContainer);
-
                         ai.appendChild(responseMessage);
                         conversation.appendChild(ai);
-                        inputField.value = '';
+
+                        typeText(responseMessage, responseDataContent, 50);
 
                         const followupQuestions = data.followup_ques;
                         while (followupQuestionsSection.firstChild) {
@@ -456,6 +456,17 @@ document.addEventListener("DOMContentLoaded", function () {
                         console.error('Error:', error);
                     });
             }
+        }
+        function typeText(element, text, speed) {
+            let index = 0;
+            function type() {
+                if (index < text.length) {
+                    element.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
         }
     }
     const style = document.createElement('style');
