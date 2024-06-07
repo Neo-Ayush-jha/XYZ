@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const openDialogButton = document.createElement('button');
     openDialogButton.id = 'openDialogButton';
-    openDialogButton.style.cssText = 'position: fixed; color: white; border: none; border-radius: 50%; padding: 10px 14px; cursor: pointer;';
+    openDialogButton.style.cssText = 'position: fixed;color: white; border: none; border-radius: 50%; padding: 10px 14px; cursor: pointer;';
 
     const openDialogButtonImage = document.createElement('img');
     openDialogButtonImage.src = 'https://ayush-jha.netlify.app/_ipx/w_640,q_75/%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png?url=%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png&w=640&q=75';
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let serviceId;
     if (!getUrlParameter(currentUrl, 'service_id')) {
-        serviceId = 'gcs_8669de';
+        serviceId = "orgcs_f2024d";
     } else {
         serviceId = getUrlParameter(currentUrl, 'service_id');
     }
@@ -86,11 +86,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const content = document.createElement('div');
         content.className = 'content';
-        content.style.cssText = 'display: flex; flex-direction: column;';
+        content.style.cssText = "display: flex; flex-direction: column;";
 
         const topRow = document.createElement('div');
         topRow.className = 'top-row';
-        topRow.style.cssText = ' padding: 10px 15px 0px 15px; display: flex; align-items: center; background: linear-gradient(to right, #93eefa, #5b5bc2); border-top-left-radius: 8px; border-top-right-radius: 8px; position: relative;';
+        topRow.style.cssText = ' padding: 15px 15px 0px 15px; display: flex;  background: linear-gradient(to right, #93eefa, #5b5bc2); border-top-left-radius: 8px; border-top-right-radius: 8px; position: relative;';
 
         const avatar = document.createElement('div');
         avatar.className = 'avatar';
@@ -106,14 +106,27 @@ document.addEventListener("DOMContentLoaded", function () {
         header.style.cssText = 'font-size: 28px; font-weight: 700; color: #000;';
         header.textContent = 'NEO ChatBot';
 
-        const status = document.createElement('div');
-        status.className = 'status';
-        status.style.color = '#9b9b9b';
-        status.textContent = 'Online';
+        const toggleButton = document.createElement('div');
+        toggleButton.id = 'toggleButton';
+        toggleButton.style.cssText = 'font-size: 10px; font-weight: 600; color: #000; margin-left: auto; cursor: pointer;top:0;height:0px;margin-left: 24%';
+
+        const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon-star"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9"/><path d="M20 3v4"/><path d="M22 5h-4"/></svg>`;
+        const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`;
+
+        toggleButton.innerHTML = moonIcon;
+
+        toggleButton.addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                toggleButton.innerHTML = sunIcon;
+            } else {
+                toggleButton.innerHTML = moonIcon;
+            }
+        });
 
         const closeButton = document.createElement('div');
         closeButton.className = 'close';
-        closeButton.style.cssText = 'font-size: 10px; font-weight: 600; color: #000; margin-left: auto; cursor: pointer; border: 1px solid #000; border-radius: 50%; padding: 4px 6px;';
+        closeButton.style.cssText = 'font-size: 10px; font-weight: 600; color: #000; margin-left: auto; cursor: pointer;top:0';
 
         const closeIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         closeIcon.setAttribute("xmlns", "http://www.w3.org/2000/svg");
@@ -190,11 +203,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const botName = document.createElement('div');
         botName.style.cssText = 'color: #666; font-size: 12px;';
-        botName.textContent = "NEO Chatbot";
+        botName.textContent = "NEO ChatBot";
 
         const message1 = document.createElement('div');
         message1.className = 'message left';
-        message1.style.cssText = 'background-color: #E9E9EAFF; color: #333; float: left; align-self: flex-start; max-width: 85%; margin-bottom: 10px; padding: 10px; border-radius:2px 14px 14px 14px ;margin-left:10px';
+        message1.style.cssText = 'background-color: #E9E9EAFF; color: #333; float: left; align-self: flex-start;max-width: 85%;margin-bottom: 10px;padding: 10px;border-radius:2px 14px 14px 14px ;margin-left:10px';
         message1.textContent = "Absolutely, let's dive in 🙏! 🌟 Feel free to ask anything on your mind, and we'll navigate through together! 🚀.";
 
         avatarContainer.appendChild(avatarImage);
@@ -205,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const typing = document.createElement('div');
         typing.className = 'typing';
-        typing.style.cssText = 'flex: 1; background-color: #fff; border-top: 1px solid #eaeaea;display: flex; align-items: center; padding:8px; border-radius: 8px; position: absolute; bottom: 0; width: 90%;';
+        typing.style.cssText = 'flex: 1; background-color: transparent; border-top: 1px solid transparent;display: flex; align-items: center; padding:8px; border-radius: 8px; position: absolute; bottom: 0; width: 90%;';
 
         const typingMessage = document.createElement('div');
         typingMessage.className = 'typing-message';
@@ -214,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const inputField = document.createElement('input');
         inputField.type = 'text';
         inputField.placeholder = 'Type your message here';
-        inputField.style.cssText = 'flex: 1; padding: 5px; margin-right: 10px; border: 1px solid #ccc; border-radius: 3px;';
+        inputField.style.cssText = 'flex: 1; padding: 5px; margin-right: 10px; border: 1px solid #DFDFE1FF; border-radius: 3px;';
         inputField.autofocus = true;
 
         const sendIcon = document.createElement('div');
@@ -224,9 +237,9 @@ document.addEventListener("DOMContentLoaded", function () {
         sendIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" xml:space="preserve"><path fill="#007bff" d="M22,11.7V12h-0.1c-0.1,1-17.7,9.5-18.8,9.1c-1.1-0.4,2.4-6.7,3-7.5C6.8,12.9,17.1,12,17.1,12H17c0,0,0-0.2,0-0.2c0,0,0,0,0,0c0-0.4-10.2-1-10.8-1.7c-0.6-0.7-4-7.1-3-7.5C4.3,2.1,22,10.5,22,11.7z" /></svg>';
 
         company.appendChild(header);
-        company.appendChild(status);
         topRow.appendChild(avatar);
         topRow.appendChild(company);
+        topRow.appendChild(toggleButton);
         topRow.appendChild(closeButton);
         content.appendChild(topRow);
         containerInner.appendChild(conversation);
@@ -281,14 +294,12 @@ document.addEventListener("DOMContentLoaded", function () {
             svgIcon.style.height = '24px';
             svgIcon.style.marginRight = '8px';
 
-
             const userName = document.createElement('div');
             userName.style.cssText = 'color: #666; font-size: 12px;';
             userName.textContent = "Customer";
 
             userContainer.appendChild(svgIcon);
             userContainer.appendChild(userName);
-
 
             const responseUserContent = messageContent;
 
@@ -305,7 +316,6 @@ document.addEventListener("DOMContentLoaded", function () {
             responseUserMessage.className = 'message right';
             responseUserMessage.style.cssText = 'position: relative; background-color: #007bff; color: #fff; float: right; align-self: flex-end; max-width: 85%; margin-bottom: 10px; padding: 10px; border-radius:14px 2px 14px 14px;';
             responseUserMessage.textContent = responseUserContent;
-
 
             container.appendChild(responseUserMessage);
             conversation.appendChild(container);
@@ -324,7 +334,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 avatarContainer.style.marginBottom = '8px';
                 avatarContainer.style.marginLeft = '-15px';
 
-
                 const avatarImage = document.createElement('img');
                 avatarImage.src = 'https://ayush-jha.netlify.app/_ipx/w_640,q_75/%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png?url=%2F_next%2Fstatic%2Fmedia%2Fa.d75973e0.png&w=640&q=75';
                 avatarImage.alt = '';
@@ -334,14 +343,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const botName = document.createElement('div');
                 botName.style.cssText = 'color: #666; font-size: 12px;';
-                botName.textContent = "NEO Chatbot";
+                botName.textContent = "NEO ChatBot";
 
                 avatarContainer.appendChild(avatarImage);
                 avatarContainer.appendChild(botName);
 
+
                 const typingMessage = document.createElement('div');
                 typingMessage.className = 'message left';
-                typingMessage.style.cssText = 'background-color: #dbdada; color: #333; float: left; align-self: flex-start;max-width: 85%;margin-bottom: 10px;padding: 10px;border-radius: 10px';
+                typingMessage.style.cssText = 'background-color: #E9E9EAFF; color: #333; float: left; align-self: flex-start;max-width: 85%;margin-bottom: 10px;padding: 10px;border-radius: 10px';
                 typingMessage.textContent = 'Typing...';
                 conversation.appendChild(typingMessage);
 
@@ -349,7 +359,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     conversation.removeChild(typingMessage);
                     const errorMessage = document.createElement('div');
                     errorMessage.className = 'message left';
-                    errorMessage.style.cssText = 'background-color: #dbdada; color: #333; float: left; align-self: flex-start;max-width: 85%;margin-bottom: 10px;padding: 10px;border-radius: 10px';
+                    errorMessage.style.cssText = 'background-color: #E9E9EAFF; color: #333; float: left; align-self: flex-start;max-width: 85%;margin-bottom: 10px;padding: 10px;border-radius: 10px';
                     errorMessage.textContent = 'Response is taking too long. Please try again later.';
                     conversation.appendChild(errorMessage);
                 }, 5000);
@@ -376,13 +386,45 @@ document.addEventListener("DOMContentLoaded", function () {
                         clearTimeout(responseTimeout);
                         conversation.removeChild(typingMessage);
 
-                        const responseDataContent = data.data.content;
+
+                        let responseDataContent;
+
+                        if (typeof data.data.content === 'string') {
+                            responseDataContent = data.data.content;
+                        } else if (Array.isArray(data.data.content) || typeof data.data.content === 'object') {
+                            responseDataContent = data.data.content.answer;
+                        }
+                        const leadGenerationPitch = data.data.content.lead_generation_pitch
+                        const connectMsg = document.createElement('div');
+
+                        connectMsg.style.marginBottom = '8px';
+                        connectMsg.style.marginLeft = '-15px';
+
+                        const msg = document.createElement('div');
+                        msg.style.cssText = 'color: #666; font-size: 12px;margin-left:4px;display: inline;  ';
+                        msg.textContent = leadGenerationPitch;
+
+                        const yesButton = document.createElement('button');
+                        yesButton.textContent = 'Yes';
+                        yesButton.style.cssText = 'margin-left:4px;padding:0px;border:0;background-color: transparent;cursor: pointer;';
+                        yesButton.addEventListener('click', openCustomDialog);
+
+                        const noButton = document.createElement('button');
+                        noButton.textContent = ' / No';
+                        noButton.style.cssText = 'margin-left:2px;padding:0px;border:0;background-color: transparent;cursor: pointer;';
+
+                        connectMsg.appendChild(msg);
+                        connectMsg.appendChild(yesButton);
+                        connectMsg.appendChild(noButton);
+
 
                         const responseMessage = document.createElement('div');
                         responseMessage.className = 'message left';
                         responseMessage.style.cssText = 'background-color: #E9E9EAFF; color: #333; float: left; align-self: flex-start;max-width: 85%;margin-bottom: 10px;padding: 10px;border-radius:2px 14px 14px 14px ;margin-left:10px';
                         ai.appendChild(avatarContainer);
                         ai.appendChild(responseMessage);
+                        if (data.data.content.can_handle === 1) { ai.appendChild(connectMsg); }
+
                         conversation.appendChild(ai);
 
                         typeText(responseMessage, responseDataContent, 50);
@@ -399,10 +441,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         followupQuestions.forEach((followQueItem, index) => {
                             if (index < 4) {
                                 const followupQuestionItem = document.createElement('div');
-                                followupQuestionItem.style.cssText = 'min-width: 28%;';
+                                followupQuestionItem.style.cssText = 'min-width: 28%; ';
 
                                 const button = document.createElement('button');
-                                button.style.cssText = 'position: relative; white-space: nowrap; border-radius: 0.375rem; padding-top: 0.75rem; padding-right: 1rem; padding-bottom: 0.75rem; padding-left: 1rem;min-width:100px';
+                                button.style.cssText = 'position: relative; white-space: nowrap; border-radius: 0.375rem; padding-top: 0.75rem; padding-right: 1rem; padding-bottom: 0.75rem; padding-left: 1rem;min-width:100px;border:0px;';
 
                                 button.addEventListener('click', () => {
                                     messageContent = `${followQueItem.part1} ${followQueItem.part2}`;
@@ -468,6 +510,198 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             type();
         }
+
+        // Dark Mode Toggle Functionality
+        let darkMode = false;
+
+        toggleButton.addEventListener('click', () => {
+            darkMode = !darkMode;
+            if (darkMode) {
+                dialog.style.setProperty('--bg-color', '#171719FF');
+                dialog.style.setProperty('--text-color', '#FFF');
+                dialog.style.setProperty('--header-bg', 'linear-gradient(to right, #1e3c72, #2a5298)');
+
+                toggleButton.style.backgroundColor = '#0056b3';
+            } else {
+                dialog.style.setProperty('--bg-color', '#FFFFFF');
+                dialog.style.setProperty('--text-color', '#000');
+                dialog.style.setProperty('--header-bg', 'linear-gradient(to right, #93eefa, #5b5bc2)');
+                toggleButton.style.backgroundColor = '#007bff';
+            }
+
+            document.body.style.backgroundColor = 'var(--bg-color)';
+            document.body.style.color = 'var(--text-color)';
+            dialog.style.backgroundColor = 'var(--bg-color)';
+            dialog.style.color = 'var(--text-color)';
+            topRow.style.background = 'var(--header-bg)';
+            message1.style.backgroundColor = 'var(--message-bg-left)';
+        });
+
+        document.documentElement.style.setProperty('--bg-color', '#FFFFFF');
+        document.documentElement.style.setProperty('--text-color', '#000');
+        document.documentElement.style.setProperty('--header-bg', 'linear-gradient(to right, #93eefa, #5b5bc2)');
+        document.documentElement.style.setProperty('--message-bg-left', '#E9E9EAFF');
+        document.documentElement.style.setProperty('--message-bg-right', '#007bff');
+
+        dialog.style.backgroundColor = 'var(--bg-color)';
+        dialog.style.color = 'var(--text-color)';
+        topRow.style.background = 'var(--header-bg)';
+        message1.style.backgroundColor = 'var(--message-bg-left)';
+
+
+        function openCustomDialog() {
+            const dialogBox = document.createElement('div');
+            dialogBox.className = 'custom-dialog';
+            const screenWidth = window.innerWidth;
+            if (screenWidth < 768) {
+                dialogBox.style.cssText = `
+                    position: fixed;
+                    inset: 50% 20% 19% 50%;
+                    width: 50%;
+                    transform: translate(-50%, -50%);
+                    padding: 20px;
+                    z-index: 9999;
+                    background-color: rgb(255, 255, 255);
+                    border: 1px solid rgb(223, 223, 225);
+                    border-radius: 8px;
+                    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+                    justify-content: center;
+                    align-items: center;
+                    justify-items: center;
+                    column-gap: 12px;
+                    row-gap: 12px;
+                    display: grid;
+                `;
+            } else {
+                dialogBox.style.cssText = `
+                    position: fixed;
+                    inset: 50% 20% 19% 86%;     
+                    width: 16%;     
+                    transform: translate(-50%, -50%);
+                    padding: 20px;
+                    z-index: 9999;
+                    background-color: rgb(255, 255, 255);
+                    border: 1px solid rgb(223, 223, 225);
+                    border-radius: 8px;
+                    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+                    justify-content: center;
+                    align-items: center;
+                    justify-items: center;
+                    column-gap: 12px;
+                    row-gap: 12px;
+                    display: grid;
+                `;
+            }
+
+
+            const headerRow = document.createElement('div')
+            headerRow.style.cssText = "width:100%;padding:4px 3px;display: flex;justify-content: space-between;row-gap: 5px;column-gap: 12px;align-items: center;"
+            const modelHeading = document.createElement('div');
+            modelHeading.style.cssText = `color:black;font-size:20px`;
+            modelHeading.textContent = 'Please fill details:';
+
+            const closeButtonSecond = document.createElement('div');
+            closeButtonSecond.className = 'close-button';
+            closeButtonSecond.style.cssText = `
+                font-size: 10px;
+                font-weight: 600;
+                color: #000;
+                margin-left: auto;
+                cursor: pointer;
+                top: 0;
+            `;
+            const closeIconSecond = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            closeIconSecond.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+            closeIconSecond.setAttribute("width", "18");
+            closeIconSecond.setAttribute("height", "18");
+            closeIconSecond.setAttribute("viewBox", "0 0 24 24");
+            closeIconSecond.setAttribute("fill", "none");
+            closeIconSecond.setAttribute("stroke", "currentColor");
+            closeIconSecond.setAttribute("stroke-width", "2");
+            closeIconSecond.setAttribute("stroke-linecap", "round");
+            closeIconSecond.setAttribute("stroke-linejoin", "round");
+            closeIconSecond.classList.add("lucide", "lucide-x");
+
+            const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            path1.setAttribute("d", "M18 6 6 18");
+
+            const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            path2.setAttribute("d", "m6 6 12 12");
+
+            closeIconSecond.appendChild(path1);
+            closeIconSecond.appendChild(path2);
+
+            closeButtonSecond.appendChild(closeIconSecond);
+
+
+            const nameRow = document.createElement('div')
+            nameRow.style.cssText = "display: flex;justify-content: center;row-gap: 5px;column-gap: 12px;align-items: center;"
+            const nameLabel = document.createElement('label');
+            nameLabel.style.cssText = `color:black`;
+            nameLabel.textContent = 'Name:';
+            const nameInput = document.createElement('input');
+            nameInput.style.cssText = `background-color: #FFFFFF; border: 1px solid #DFDFE1FF;  `;
+            nameInput.type = 'text';
+            nameInput.style.cssText = "padding:4px 2px";
+            nameInput.placeholder = 'Enter your name';
+
+            const emailRow = document.createElement('div')
+            emailRow.style.cssText = "display: flex;justify-content: center;row-gap: 5px;column-gap: 12px;align-items: center;"
+            const emailLabel = document.createElement('label');
+            emailLabel.style.cssText = `color:black`;
+            emailLabel.textContent = 'Email:';
+            const emailInput = document.createElement('input');
+            emailInput.type = 'email';
+            emailInput.style.cssText = "padding:4px 2px";
+            emailInput.placeholder = 'Enter your email';
+
+            const numbarRow = document.createElement('div')
+            numbarRow.style.cssText = "display: flex;justify-content: center;row-gap: 5px;column-gap: 12px;align-items: center;"
+            const numberLabel = document.createElement('label');
+            numberLabel.style.cssText = `color:black`;
+            numberLabel.textContent = 'Number:';
+            const numberInput = document.createElement('input');
+            numberInput.type = 'text';
+            numberInput.style.cssText = "padding:4px 2px";
+            numberInput.placeholder = 'Enter your number';
+
+            const submitButton = document.createElement('button');
+            submitButton.style.cssText = "width: 100%; padding: 4px 3px;  background:rgb(0, 123, 255); color: rgba(255, 255, 255, var(--tw-text-opacity)); border: 0; border-radius: 2px; font-weight: 600; font-size: medium;";
+            submitButton.textContent = 'Submit';
+
+            headerRow.appendChild(modelHeading);
+            headerRow.appendChild(closeButtonSecond);
+            dialogBox.appendChild(headerRow);
+            nameRow.appendChild(nameLabel);
+            nameRow.appendChild(nameInput);
+            dialogBox.appendChild(nameRow);
+            emailRow.appendChild(emailLabel);
+            emailRow.appendChild(emailInput);
+            dialogBox.appendChild(emailRow);
+            numbarRow.appendChild(numberLabel);
+            numbarRow.appendChild(numberInput);
+            dialogBox.appendChild(numbarRow);
+            dialogBox.appendChild(submitButton);
+
+            document.body.appendChild(dialogBox);
+
+            submitButton.addEventListener('click', function () {
+                const name = nameInput.value.trim();
+                const email = emailInput.value.trim();
+                const number = numberInput.value.trim();
+
+                console.log('Name:', name);
+                console.log('Email:', email);
+                console.log('Number:', number);
+
+                document.body.appendChild(dialogBox);
+            });
+            closeButtonSecond.addEventListener('click', function () {
+                dialogBox.style.display = 'none';
+            });
+        }
+
+
     }
     const style = document.createElement('style');
     style.textContent = `
